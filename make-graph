@@ -1,0 +1,41 @@
+#!/usr/bin/env python
+
+'''
+Make exhaustive graph for N pills. See pill-bottle.
+
+Produces:
+   - DOT language on stdout
+   - errors on stderr
+
+Example usage:
+    $ make-graph N > foo.gv
+    $ dot -Tpng foo.gv > foo.png
+    $ view foo.png
+'''
+
+import sys
+
+N = int(sys.argv[1])
+edges = {}
+
+def add_edge (w0, h0, w1, h1):
+    edge = ("\"%d,%d\" -> \"%d,%d\"" % (w0, h0, w1, h1))
+    edges[edge] = 1
+
+def draw_pill(wholes, halves):
+    '''Make an edge for all states.'''
+    if wholes > 0:
+        add_edge(wholes, halves, wholes-1, halves+2)
+        draw_pill(wholes-1, halves+2)
+    if halves > 0:
+        add_edge(wholes, halves, wholes, halves-1)
+        draw_pill(wholes, halves-1)
+
+draw_pill(N, 0)
+
+print("digraph Pills {")
+print('label="Pill Possibilities for N=' + str(N) + '"')
+#print('rankdir=LR')
+for e in edges:
+    print(e)
+print("}")
