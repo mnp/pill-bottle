@@ -31,11 +31,13 @@ def draw_pill(wholes, halves):
         add_edge(wholes, halves, wholes, halves-1)
         draw_pill(wholes, halves-1)
 
-draw_pill(N, 0)
+def print_graph():
+    states = len(edges) + 1
+    print("digraph Pills {")
+    print('label="%d states for N=%d"' % (states, N))
+    for e in edges:
+        print(e)
+    print("}")
 
-print("digraph Pills {")
-print('label="Pill Possibilities for N=' + str(N) + '"')
-#print('rankdir=LR')
-for e in edges:
-    print(e)
-print("}")
+draw_pill(N, 0)
+print_graph()
