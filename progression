@@ -1,0 +1,39 @@
+#!/usr/bin/env python
+
+'''
+Produce progressions from the state graph.
+
+Example usage:
+    $ progression N
+
+  4  states for N=1
+ 11 states for N=2
+ 22 states for N=3
+ 37 states for N=4
+ 56 states for N=5
+ 79 states for N=6
+106 states for N=7
+137 states for N=8
+172 states for N=9
+211 states for N=10
+
+ -- Old two phase method, more states
+    3 10 21 36 55 78 105 136 171 210 -- the Triangular numbers, n(n+1)/2
+
+-- Newer cut-and draw method, fewer states.
+   3 7 13 21 31 43 57 73 91 -- odd numbers, 2n+1
+'''
+
+from common import Common
+import sys
+
+def print_graph(n):
+    states = len(c.edges) + 1
+    print("%d states for N=%d" % (states, n))
+
+N = int(sys.argv[1])
+c = Common()
+
+for n in range(1,N):
+    c.draw_pill(n, 0)
+    print_graph(n)

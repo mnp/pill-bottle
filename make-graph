@@ -13,31 +13,18 @@ Example usage:
     $ view foo.png
 '''
 
+from common import Common
 import sys
 
-N = int(sys.argv[1])
-edges = {}
-
-def add_edge (w0, h0, w1, h1):
-    edge = ("\"%d,%d\" -> \"%d,%d\"" % (w0, h0, w1, h1))
-    edges[edge] = 1
-
-def draw_pill(wholes, halves):
-    '''Make an edge for all states.'''
-    if wholes > 0:
-        add_edge(wholes, halves, wholes-1, halves+2)
-        draw_pill(wholes-1, halves+2)
-    if halves > 0:
-        add_edge(wholes, halves, wholes, halves-1)
-        draw_pill(wholes, halves-1)
-
 def print_graph():
-    states = len(edges) + 1
     print("digraph Pills {")
-    print('label="%d states for N=%d"' % (states, N))
-    for e in edges:
+    print('label="%d edges for N=%d"' % (len(c.edges), N))
+    for e in c.edges:
         print(e)
     print("}")
 
-draw_pill(N, 0)
+N = int(sys.argv[1])
+c = Common()
+
+c.draw_pill(N, 0)
 print_graph()
