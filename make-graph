@@ -24,7 +24,7 @@ def print_graph():
     print("}")
 
 N = int(sys.argv[1])
-c = Common()
+c = Common(2)
 
 c.draw_pill(N, 0)
 print_graph()
