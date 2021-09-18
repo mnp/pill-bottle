@@ -1,18 +1,21 @@
 # pill-bottle
-Experimenting with a probability problem.
+Experimenting with a simple probability problem produces an interesting function.
 
-A medicine bottle contains N tablets and you are supposed to take a
+A medicine bottle contains `n` tablets and you are supposed to take a
 half tablet per day. Every day, you draw at random from the bottle
 either a half or a whole tablet.  If a half, it's consumed.  If it's a
-whole, half is consumed and half is returned to the bottle. After 2N
+whole, half is consumed and half is returned to the bottle. After `2n`
 draws, the bottle is empty.
 
-Is there anything interesting about the numbers of whole and half
-tablets in the bottle over time?
+The question is, what are the odds of drawing a half tablet at every turn?
 
 ## Choices
 
-Graphing the choices at any step as a progression leads to finding Triangular Numbers.
+Before the first draw, there are `n` wholes and 0 halves, which we can write as `(n,0)`. After the first draw, one whole
+was consumed and one half returned to the bottle, so the second state is `(n-1, 1)`. The third draw gets interesting because in one world, a whole is chosen and in another world, a half is chosen, so `(2,2)` and `(3,0)`.
+
+![N](images/overview.png){ width=70% align=center }
+
 
 ## Randomness
 
