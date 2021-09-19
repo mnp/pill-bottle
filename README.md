@@ -1,13 +1,14 @@
 # pill-bottle
 
-<img src="nodes-4.png" width="150" align="right" />
-
 Experimenting with a simple probability problem produces an interesting function.
 
+<img src="nodes-4.png" width="150" align="right" />
+
 A medicine bottle contains `n` tablets and you are supposed to take a
-half tablet per day. Every day, you draw at random from the bottle
-either a half or a whole tablet.  If a half, it's consumed.  If it's a
-whole, half is consumed and half is returned to the bottle. After `2n`
+half tablet per day. You could break all the pills at once and put them back in the bottle, 
+but there would be no fun in that. So every day, you draw at random from the bottle either 
+a half or a whole tablet.  If a half, it's consumed.  If it's a
+whole, break the tablet, half is consumed, and half is returned to the bottle. After `2n`
 draws, the bottle is empty.
 
 The question is, what are the odds of drawing a half tablet at every turn?
@@ -22,12 +23,12 @@ After the first draw, one whole was consumed and one half returned to the bottle
 
 ## Counting 
 
-At tree depths with only one node, the odds of drawing a half are simply `halves / (wholes + halves) * 100`. At depths with multiple choices, summ wholes across the  level, sum wholes across the level, and then apply the same formula.
+At tree depths with only one node, the odds of drawing a half are simply `halves / (wholes + halves) * 100`. At depths with multiple choices, sum wholes across the  level, sum halves across the level, and then apply the same formula.
 
 ## Results
 
+The `make-data` code descends the node graph breadth first, summing odds across each level as it goes.
 Plotting odds from 0 to `n` turns for `n=10` and `n=100` shows some curious evolutions.
-
 
 <img src="plot-10.png" width="400" align="left" />
 
