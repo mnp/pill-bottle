@@ -30,7 +30,7 @@ At tree depths with only one node, the odds of drawing a half are simply `halves
 The `make-data` code descends the node graph breadth first, summing odds across each level as it goes.
 Plotting odds from 0 to `n` turns for `n=10` and `n=100` shows some curious evolutions.
 
-<img src="plot-10.png" width="400" align="left" />
+<img src="plot-10.png" width="300" align="left" />
 
-<img src="plot-100.png" width="400" align="right" />
+<img src="plot-100.png" width="300" align="right" />
 
